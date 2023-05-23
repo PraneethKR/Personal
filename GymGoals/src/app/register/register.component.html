@@ -1,0 +1,122 @@
+<div class="heading">
+    <span [routerLink]="['']" class="previous round">&#8249;</span>
+    <h1>Welcome</h1>
+</div>
+<div class="container" *ngIf="!submitted">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="register" [formGroup]="registerForm">
+				<div class="register__field">
+					<input type="text" class="register__input" placeholder="First Name" formControlName="firstName">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['firstName'].errors?.['required'] && registerForm.controls['firstName'].touched">
+                    First Name is required for register
+                </mat-error>
+                <div class="register__field">
+					<input type="text" class="register__input" placeholder="Last Name" formControlName="lastName">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['lastName'].errors?.['required'] && registerForm.controls['lastName'].touched">
+                    Last Name is required for register
+                </mat-error>
+                <div class="register__field">
+					<input type="text" class="register__input" placeholder="User Name" formControlName="username">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['username'].errors?.['required'] && registerForm.controls['username'].touched">
+                    User Name is required for register
+                </mat-error>
+                <div class="register__field">
+					<input type="text" class="register__input" placeholder="Email" formControlName="email">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="(registerForm.controls['email'].errors?.['required'] || registerForm.controls['email'].invalid) && registerForm.controls['email'].touched">
+                    Email is required for register
+                </mat-error>
+                <div class="register__field">
+					<input type="text" class="register__input" placeholder="Password" formControlName="password">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="(registerForm.controls['password'].invalid || registerForm.controls['password'].errors?.['required']) && registerForm.controls['password'].touched">
+                    Password is required for register and must contain 1 uppercase,1 lowercase,1 special letter,1 number and 9 characters length
+                </mat-error>
+                <div class="register__field">
+					<input type="text" class="register__input" placeholder="Confirm Password" formControlName="confirmPassword">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value && registerForm.controls['confirmPassword'].touched">
+                    Password does not match
+                </mat-error>
+                <div class="register__field">
+					<input type="number" class="register__input" placeholder="Height(cm)" formControlName="height">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['height'].errors?.['required'] && registerForm.controls['height'].touched">
+                    Height is required for register
+                </mat-error>
+                <div class="register__field">
+					<input type="number" class="register__input" placeholder="Body Fat(%)" formControlName="bodyFat">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['bodyFat'].errors?.['required'] && registerForm.controls['bodyFat'].touched">
+                    Body Fat is required for register
+                </mat-error>
+                <div class="register__field">
+					<i class="register__icon bi bi-person-circle"></i>
+					<input type="number" class="register__input" placeholder="Skeletal Muscle" formControlName="skeletalMuscle">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['skeletalMuscle'].errors?.['required'] && registerForm.controls['skeletalMuscle'].touched">
+                    Skeletal Muscle is required for register
+                </mat-error>
+                <div class="register__field">
+					<input type="number" step="0.01" class="register__input" placeholder="Weight(lbs)" formControlName="weight">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['weight'].errors?.['required'] && registerForm.controls['weight'].touched">
+                    Weight is required for register
+                </mat-error>
+                <div class="register__field">
+                    <select class="register__input" aria-placeholder="Gender" name="gender" id="gender" formControlName="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['gender'].errors?.['required'] && registerForm.controls['gender'].touched">
+                    Gender is required for register
+                </mat-error>
+                <div class="register__field">
+					<input type="date" step="0.01" class="register__input" placeholder="Date" formControlName="DOB">
+				</div>
+				&nbsp;
+                <mat-error *ngIf="registerForm.controls['DOB'].errors?.['required'] && registerForm.controls['DOB'].touched">
+                    Date is required for register
+                </mat-error>
+                <mat-error class="login-error" *ngIf="registerError">
+                    Email already in use
+                </mat-error>
+			</form>
+
+            <button class="button register__submit" *ngIf="registerForm.valid && (registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value)" (click)="register()">
+                <span class="button__text">Create Profile</span>
+                <i class="button__icon fas fa-chevron-right"></i>
+            </button>
+            <button class="button register__submit" (click)="clearForm()">
+                <span class="button__text">Clear</span>
+            </button>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+        <div class="heading">
+            <h4 [routerLink]="['/login']">
+                Already have an account? SignIn
+            </h4>
+        </div>
+	</div>
+</div>

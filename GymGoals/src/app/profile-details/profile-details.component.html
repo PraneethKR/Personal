@@ -1,0 +1,332 @@
+<section>
+  <div class="rt-container">
+    <div class="col-rt-12">
+      <div class="Scriptcontent">
+
+        <!-- Student Profile -->
+        <div class="student-profile py-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card shadow-sm">
+                  <div class="card-header bg-transparent text-center">
+                    <img class="profile_img" src="../../assets/profile-icon-design-free-vector.webp" alt="student dp">
+                    <h3>Praneeth Kumar Reddy Punreddy</h3>
+                  </div>
+                  <div class="card-body">
+                    <p class="mb-0"><strong class="pr-1">Username: </strong>praneeth_56</p>
+                    <p class="mb-0"><strong class="pr-1">Email: </strong>praneethpunreddy@gmail.com</p>
+                    <p class="mb-0"><strong class="pr-1">Gender: </strong>Male</p>
+                    <p class="mb-0"><strong class="pr-1">DOB: </strong>31/05/2003</p>
+                    <p class="mb-0"><strong class="pr-1">Verification: </strong>Verified</p>
+                  </div>
+                </div>
+                <br />
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Edit Username
+                  </div>
+                  <div class="card-header bg-transparent text-center">
+                    <form [formGroup]="changeUsernameForm">
+                      <div class="input-group mb-3">
+                        <input type="text" formControlName="userName" class="form-control" placeholder="Edit Username"
+                          aria-label="Username" value="praneeth_56">
+                      </div>
+                      <div>
+                        <button *ngIf="changeUsernameForm.valid" (click)="changeUserName()"
+                          class="btn btn-primary">Save</button>
+                        &nbsp;
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <br />
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Add Weight(lbs)
+                  </div>
+                  <div class="card-header bg-transparent text-center">
+                    <form [formGroup]="changeWeightForm">
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Add Weight" aria-label="Weight"
+                          formControlName="weight">
+                      </div>
+                      <div>
+                        <button *ngIf="changeWeightForm.valid" class="btn btn-primary">Save</button>
+                        &nbsp;
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <br />
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Add Skeletal Muscle
+                  </div>
+                  <div class="card-header bg-transparent text-center">
+                    <form [formGroup]="changeSkeletalMuscleForm">
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Add Skeletal Muscle"
+                          aria-label="Skeletal Muscle" formControlName="skeletalMuscle">
+                      </div>
+                      <div>
+                        <button *ngIf="changeSkeletalMuscleForm.valid" class="btn btn-primary">Save</button>
+                        &nbsp;
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <br />
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Add Body Fat(%)
+                  </div>
+                  <div class="card-header bg-transparent text-center">
+                    <form [formGroup]="changeBodyFatForm">
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Add Body Fat" aria-label="Body Fat"
+                          formControlName="bodyFat">
+                      </div>
+                      <div>
+                        <button *ngIf="changeBodyFatForm.valid" class="btn btn-primary">Save</button>
+                        &nbsp;
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <br />
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Change Password
+                  </div>
+                  <div class="card-header bg-transparent text-center">
+                    <form [formGroup]="changePasswordForm">
+                      <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Old Password" aria-label="Old Password"
+                          formControlName="oldPassword">
+                        <mat-error class="text-danger"
+                          *ngIf="changePasswordForm.controls['oldPassword'].touched && changePasswordForm.controls['oldPassword'].errors?.['required']">
+                          Old is required to change current password
+                        </mat-error>
+                      </div>
+                      <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="New Password" aria-label="New Password"
+                          formControlName="newPassword">
+                        <mat-error class="text-danger"
+                          *ngIf="changePasswordForm.controls['newPassword'].touched && (changePasswordForm.controls['newPassword'].errors?.['required'] || changePasswordForm.controls['newPassword'].invalid)">
+                          Password is required for register and must contain 1 uppercase,1 lowercase,1 special letter,1
+                          number and 9 characters length
+                        </mat-error>
+                      </div>
+                      <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Confirm New Password"
+                          aria-label="Confirm New Password" formControlName="confirmPassword">
+                        <mat-error class="text-danger"
+                          *ngIf="changePasswordForm.controls['newPassword'].touched && (changePasswordForm.controls['confirmPassword'].value != changePasswordForm.controls['newPassword'].value)">
+                          Password does not match
+                        </mat-error>
+                      </div>
+                      <div>
+                        <button
+                          *ngIf="changePasswordForm.valid && (changePasswordForm.controls['confirmPassword'].value === changePasswordForm.controls['newPassword'].value)"
+                          class="btn btn-primary">Save</button>
+                        &nbsp;
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <br />
+              </div>
+              <div class="col-lg-8">
+                <div class="card shadow-sm">
+                  <div class="card-header bg-transparent border-0">
+                    <h3 class="mb-0">Weekly Workout plan</h3>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Today's Plan</h5>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-info">Details</a>
+                  </div>
+                  <hr />
+                  <div class="card-body">
+                    <h5 class="card-title">Tuesday</h5>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-info">Details</a>
+                  </div>
+                  <hr />
+                  <div class="card-body">
+                    <h5 class="card-title">Wednesday</h5>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-info">Details</a>
+                  </div>
+                  <hr />
+                  <div class="card-body">
+                    <h5 class="card-title">Thursday</h5>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-info">Details</a>
+                  </div>
+                  <hr />
+                  <div class="card-body">
+                    <h5 class="card-title">Friday</h5>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-info">Details</a>
+                  </div>
+                  <hr />
+                  <div class="card-body">
+                    <h5 class="card-title">Saturday</h5>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-info">Details</a>
+                  </div>
+                  <hr />
+                  <div class="card-body">
+                    <h5 class="card-title">Sunday</h5>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-info">Details</a>
+                  </div>
+                </div>
+                <br />
+              </div>
+            </div>
+            <div class="card shadow-sm">
+              <div class="card-header">
+                Progress Tracker
+              </div>
+              <br/>
+              <div class="card shadow-sm">
+                <div class="card-header">
+                  Weight Target Achievement
+                </div>
+                <br/>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" [style.width.%]="weight" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <br/>
+              <div class="card shadow-sm">
+                <div class="card-header">
+                  Body Fat Target Achievement
+                </div>
+                <br/>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" [style.width.%]="bodyFat" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <br/>
+              <div class="card shadow-sm">
+                <div class="card-header">
+                  Skeletal Muscle Target Achievement
+                </div>
+                <br/>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" [style.width.%]="skeletalMuscle" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="card shadow-sm">
+              <div class="card-header">
+                Health Measurements
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Add Target for Weight(lbs)
+                  </div>
+                  <div class="card-header bg-transparent text-center">
+                    <div class="input-group mb-3">
+                      <input type="number" [(ngModel)]="weight" class="form-control" placeholder="Add Target for Weight"
+                        aria-label="weight">
+                    </div>
+                    <div>
+                      <button (click)="open()" class="btn btn-primary">Save</button>
+                      &nbsp;
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Add Target for Body Fat(%)
+                  </div>
+                  <div class="card-header bg-transparent text-center">
+                    <div class="input-group mb-3">
+                      <input type="number" [(ngModel)]="bodyFat" class="form-control"
+                        placeholder="Add Target for Body Fat" aria-label="bodyFat">
+                    </div>
+                    <div>
+                      <button (click)="open()" class="btn btn-primary">Save</button>
+                      &nbsp;
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Add Target for Skeletal Muscle
+                  </div>
+                  <div class="card-header bg-transparent text-center">
+                    <div class="input-group mb-3">
+                      <input type="number" [(ngModel)]="skeletalMuscle" class="form-control"
+                        placeholder="Add Target for Skeletal Muscle" aria-label="skeletalMuscle">
+                    </div>
+                    <div>
+                      <button (click)="open()" class="btn btn-primary">Save</button>
+                      &nbsp;
+                    </div>
+                  </div>
+                </div>
+                <br />
+              </div>
+              <div class="col-lg-4">
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Weight
+                  </div>
+                  <div class="card-body">
+                    0
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Body Fat
+                  </div>
+                  <div class="card-body">
+                    0
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    Skeletal Muscle
+                  </div>
+                  <div class="card-body">
+                    0
+                  </div>
+                </div>
+                <br />
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
+        <!-- partial -->
+
+      </div>
+    </div>
+  </div>
+</section>
