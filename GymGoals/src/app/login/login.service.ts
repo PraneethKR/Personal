@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs'
+import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs'
 import { map } from 'rxjs/operators'
+
 
 
 const httpOptions = {
@@ -16,7 +17,7 @@ const httpOptions = {
 })
 
 export class LoginService {
-
+  private loggedIn: Subject<boolean> = new ReplaySubject<boolean>(1);
   constructor(private http: HttpClient) { }
 
   login(userData: any) {
@@ -25,9 +26,20 @@ export class LoginService {
         .pipe(
             map((data: any) => {
               localStorage.setItem ('token', data.token);
-              localStorage.setItem('user', data.user);
+              localStorage.setItem('user', JSON.stringify(data.user));
+              this.loggedIn.next(true)
                 return data
             })
         )
-}
+  }
+
+  logout(){
+    console.log(this.loggedIn)
+    this.loggedIn.next(false)
+    return;
+  }
+
+  loginStatusChange(): Observable<boolean> {
+    return this.loggedIn.asObservable();
+  }
 }

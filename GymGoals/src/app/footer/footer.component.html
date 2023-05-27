@@ -1,0 +1,97 @@
+
+  <footer
+          class="text-center text-lg-start text-white"
+          style="background-color: #1c2331"
+          >
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-35">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 pt-5">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold">Gym Goals</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p>
+              It's important to note that everyone's goals and fitness journeys are unique, and it's essential to set realistic, attainable goals that align with individual abilities and lifestyles. Additionally, consulting with a qualified fitness professional can provide personalized guidance and help develop an effective workout plan tailored to specific goals.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 pt-5">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Products</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p>
+              <a href="#!" class="text-white">Workout Plans</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Create Workout Plan</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 pt-5">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Links</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p>
+              <a (click)="profileDetails()" *ngIf="user != null" class="text-white">Profile</a>
+            </p>
+            <p>
+              <a href="/register" *ngIf="user === null" class="text-white">Sign Up</a>
+            </p>
+            <p>
+              <a href="/signIn" *ngIf="user === null" class="text-white">Sign In</a>
+            </p>
+            <p>
+              <a href="/contact" class="text-white">Contact</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 pt-5">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Contact</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p><i class="bi bi-house-door-fill mr-3"></i> 1750 Finch Ave</p>
+            <p><i class="bi bi-envelope-at-fill mr-3"></i> gymgoals@example.com</p>
+            <p><i class="bi bi-telephone-fill mr-3"></i> + 01 234 567 88</p>
+            <p><i class="bi bi-printer-fill mr-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: rgba(0, 0, 0, 0.2)"
+         >
+      © 2023 Copyright:
+      <a class="text-white" href="/"
+         >GymGoals.com</a
+        >
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->

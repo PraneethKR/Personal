@@ -9,7 +9,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatDialogModule } from "@angular/material/dialog";
 import { RegisterComponent } from './register/register.component';
@@ -17,6 +17,10 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
 import { GuardAuthService } from './guard-auth.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { AuthServiceInterceptor } from './auth-service.interceptor';
+import { HeadingComponent } from './heading/heading.component';
+import { FooterComponent } from './footer/footer.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -53,6 +57,11 @@ const routes: Routes = [
         import('./profile-details/profile-details.module').then(
             (m) => m.ProfileDetailsModule
         ),
+        canActivate: [GuardAuthService]
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
   },
   
 ]
@@ -64,6 +73,9 @@ const routes: Routes = [
     EmailVerificationComponent,
     LandingPageComponent,
     ProfileDetailsComponent,
+    HeadingComponent,
+    FooterComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +93,13 @@ const routes: Routes = [
       useHash: false,
   }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthServiceInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

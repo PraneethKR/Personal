@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _loginService: LoginService,
     private dialog: MatDialog,
-    private _router: Router,
+    private _router: Router
   ) {
     this._unsubscribeAll = new Subject<any>()
   }

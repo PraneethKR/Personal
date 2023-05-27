@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileDetailsComponent } from './profile-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GuardAuthService } from '../guard-auth.service';
+
 
 const routes: Routes = [
   {
       path: '',
       component: ProfileDetailsComponent,
+      canActivate: [GuardAuthService]
   },
 ]
 

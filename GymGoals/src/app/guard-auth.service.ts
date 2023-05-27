@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GuardAuthService implements CanActivate {
+export class GuardAuthService {
 
   // Initialization
 
@@ -14,28 +14,13 @@ export class GuardAuthService implements CanActivate {
 
   // Methods
 
-  isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    if (token) {
-      console.log('token exists');
-      return true;
-    } else {
-      console.error('no token');
-      return false;
-    }
-  }
-
   canActivate(): boolean {
 
-    if (!this.isAuthenticated()) {
+    if (!localStorage.getItem('token')) {
       this.router.navigate(['/login']);
       return false;
     }
     return true;
   }
 
-  logout(){
-    localStorage.removeItem('user');
-    localStorage.removeItem('token')
-  }
 }

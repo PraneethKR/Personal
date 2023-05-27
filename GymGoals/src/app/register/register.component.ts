@@ -31,9 +31,12 @@ export class RegisterComponent {
       bodyFat: [, Validators.required],
       weight: [[], Validators.required],
       DOB: ["", Validators.required],
-      gender: ["", Validators.required],
+      gender: ["female", Validators.required],
       skeletalMuscle: ["", Validators.required],
-      verification: ["not verified", Validators.required]
+      verification: ["not verified", Validators.required],
+      skeletalMuscleTarget:[0],
+      weightTarget: [0],
+      bodyFatTarget: [0]
     })
   }
 
@@ -61,9 +64,12 @@ export class RegisterComponent {
       bodyFat: [, Validators.required],
       weight: [[], Validators.required],
       DOB: ["", Validators.required],
-      gender: ["", Validators.required],
+      gender: ["female", Validators.required],
       skeletalMuscle: ["", Validators.required],
-      verification: ["not verified", Validators.required]
+      verification: ["not verified", Validators.required],
+      skeletalMuscleTarget:[0],
+      weightTarget: [0],
+      bodyFatTarget: [0]
     })
   }
 }

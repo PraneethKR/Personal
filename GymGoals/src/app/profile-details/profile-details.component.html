@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="dataAvailable">
   <div class="rt-container">
     <div class="col-rt-12">
       <div class="Scriptcontent">
@@ -11,14 +11,16 @@
                 <div class="card shadow-sm">
                   <div class="card-header bg-transparent text-center">
                     <img class="profile_img" src="../../assets/profile-icon-design-free-vector.webp" alt="student dp">
-                    <h3>Praneeth Kumar Reddy Punreddy</h3>
+                    <h3>{{profileData.firstName + ' ' + profileData.lastName}}</h3>
+                    <button class="btn btn-danger" (click)="deleteProfile()"><i class="bi bi-trash3-fill">Delete</i></button>
                   </div>
                   <div class="card-body">
-                    <p class="mb-0"><strong class="pr-1">Username: </strong>praneeth_56</p>
-                    <p class="mb-0"><strong class="pr-1">Email: </strong>praneethpunreddy@gmail.com</p>
-                    <p class="mb-0"><strong class="pr-1">Gender: </strong>Male</p>
-                    <p class="mb-0"><strong class="pr-1">DOB: </strong>31/05/2003</p>
-                    <p class="mb-0"><strong class="pr-1">Verification: </strong>Verified</p>
+                    <p class="mb-0"><strong class="pr-1">Username: </strong>{{profileData.username}}</p>
+                    <p class="mb-0"><strong class="pr-1">Email: </strong>{{profileData.email}}</p>
+                    <p class="mb-0"><strong class="pr-1">Gender: </strong>{{profileData.gender}}</p>
+                    <p class="mb-0"><strong class="pr-1">Height: </strong>{{profileData.height}}cm</p>
+                    <p class="mb-0"><strong class="pr-1">DOB: </strong>{{profileData.DOB | date: 'dd/MM/YYYY'}}</p>
+                    <p class="mb-0"><strong class="pr-1">Verification: </strong>{{profileData.verification}}</p>
                   </div>
                 </div>
                 <br />
@@ -30,7 +32,7 @@
                     <form [formGroup]="changeUsernameForm">
                       <div class="input-group mb-3">
                         <input type="text" formControlName="userName" class="form-control" placeholder="Edit Username"
-                          aria-label="Username" value="praneeth_56">
+                          aria-label="Username">
                       </div>
                       <div>
                         <button *ngIf="changeUsernameForm.valid" (click)="changeUserName()"
@@ -52,7 +54,7 @@
                           formControlName="weight">
                       </div>
                       <div>
-                        <button *ngIf="changeWeightForm.valid" class="btn btn-primary">Save</button>
+                        <button *ngIf="changeWeightForm.valid" (click)="changeWeight()" class="btn btn-primary">Save</button>
                         &nbsp;
                       </div>
                     </form>
@@ -70,7 +72,7 @@
                           aria-label="Skeletal Muscle" formControlName="skeletalMuscle">
                       </div>
                       <div>
-                        <button *ngIf="changeSkeletalMuscleForm.valid" class="btn btn-primary">Save</button>
+                        <button *ngIf="changeSkeletalMuscleForm.valid" (click)="changeSkeletalMuscle()" class="btn btn-primary">Save</button>
                         &nbsp;
                       </div>
                     </form>
@@ -88,7 +90,7 @@
                           formControlName="bodyFat">
                       </div>
                       <div>
-                        <button *ngIf="changeBodyFatForm.valid" class="btn btn-primary">Save</button>
+                        <button *ngIf="changeBodyFatForm.valid" (click)="changeBodyFat()" class="btn btn-primary">Save</button>
                         &nbsp;
                       </div>
                     </form>
@@ -198,34 +200,37 @@
               <div class="card-header">
                 Progress Tracker
               </div>
-              <br/>
+              <br />
               <div class="card shadow-sm">
                 <div class="card-header">
                   Weight Target Achievement
                 </div>
-                <br/>
+                <br />
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" [style.width.%]="weight" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" [style.width.%]="weightTarget" aria-valuenow="70"
+                    aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
-              <br/>
+              <br />
               <div class="card shadow-sm">
                 <div class="card-header">
                   Body Fat Target Achievement
                 </div>
-                <br/>
+                <br />
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" [style.width.%]="bodyFat" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" [style.width.%]="bodyFatTarget" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
-              <br/>
+              <br />
               <div class="card shadow-sm">
                 <div class="card-header">
                   Skeletal Muscle Target Achievement
                 </div>
-                <br/>
+                <br />
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" [style.width.%]="skeletalMuscle" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" [style.width.%]="skeletalMuscleTarget" aria-valuenow="60"
+                    aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
             </div>
@@ -248,7 +253,7 @@
                         aria-label="weight">
                     </div>
                     <div>
-                      <button (click)="open()" class="btn btn-primary">Save</button>
+                      <button (click)="changeWeightTarget()" *ngIf="weight != null" class="btn btn-primary">Save</button>
                       &nbsp;
                     </div>
                   </div>
@@ -265,7 +270,7 @@
                         placeholder="Add Target for Body Fat" aria-label="bodyFat">
                     </div>
                     <div>
-                      <button (click)="open()" class="btn btn-primary">Save</button>
+                      <button (click)="changeBodyFatTarget()" *ngIf="bodyFat != null" class="btn btn-primary">Save</button>
                       &nbsp;
                     </div>
                   </div>
@@ -282,7 +287,7 @@
                         placeholder="Add Target for Skeletal Muscle" aria-label="skeletalMuscle">
                     </div>
                     <div>
-                      <button (click)="open()" class="btn btn-primary">Save</button>
+                      <button (click)="changeSkeletalMuscleTarget()" *ngIf="skeletalMuscle != null" class="btn btn-primary">Save</button>
                       &nbsp;
                     </div>
                   </div>
@@ -295,7 +300,7 @@
                     Weight
                   </div>
                   <div class="card-body">
-                    0
+                    {{profileData.weight[profileData.weight.length - 1]}}lbs
                   </div>
                 </div>
               </div>
@@ -305,7 +310,7 @@
                     Body Fat
                   </div>
                   <div class="card-body">
-                    0
+                    {{profileData.bodyFat[profileData.bodyFat.length - 1]}}%
                   </div>
                 </div>
               </div>
@@ -315,7 +320,7 @@
                     Skeletal Muscle
                   </div>
                   <div class="card-body">
-                    0
+                    {{profileData.skeletalMuscle[profileData.skeletalMuscle.length - 1]}}%
                   </div>
                 </div>
                 <br />

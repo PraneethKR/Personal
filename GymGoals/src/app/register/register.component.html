@@ -1,122 +1,150 @@
-<div class="heading">
-    <span [routerLink]="['']" class="previous round">&#8249;</span>
-    <h1>Welcome</h1>
+<div class="p-2 text-center bg-light">
+    <h1 class="mb-2">Registration Form</h1>
 </div>
-<div class="container" *ngIf="!submitted">
-	<div class="screen">
-		<div class="screen__content">
-			<form class="register" [formGroup]="registerForm">
-				<div class="register__field">
-					<input type="text" class="register__input" placeholder="First Name" formControlName="firstName">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['firstName'].errors?.['required'] && registerForm.controls['firstName'].touched">
-                    First Name is required for register
-                </mat-error>
-                <div class="register__field">
-					<input type="text" class="register__input" placeholder="Last Name" formControlName="lastName">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['lastName'].errors?.['required'] && registerForm.controls['lastName'].touched">
-                    Last Name is required for register
-                </mat-error>
-                <div class="register__field">
-					<input type="text" class="register__input" placeholder="User Name" formControlName="username">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['username'].errors?.['required'] && registerForm.controls['username'].touched">
-                    User Name is required for register
-                </mat-error>
-                <div class="register__field">
-					<input type="text" class="register__input" placeholder="Email" formControlName="email">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="(registerForm.controls['email'].errors?.['required'] || registerForm.controls['email'].invalid) && registerForm.controls['email'].touched">
-                    Email is required for register
-                </mat-error>
-                <div class="register__field">
-					<input type="text" class="register__input" placeholder="Password" formControlName="password">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="(registerForm.controls['password'].invalid || registerForm.controls['password'].errors?.['required']) && registerForm.controls['password'].touched">
-                    Password is required for register and must contain 1 uppercase,1 lowercase,1 special letter,1 number and 9 characters length
-                </mat-error>
-                <div class="register__field">
-					<input type="text" class="register__input" placeholder="Confirm Password" formControlName="confirmPassword">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value && registerForm.controls['confirmPassword'].touched">
-                    Password does not match
-                </mat-error>
-                <div class="register__field">
-					<input type="number" class="register__input" placeholder="Height(cm)" formControlName="height">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['height'].errors?.['required'] && registerForm.controls['height'].touched">
-                    Height is required for register
-                </mat-error>
-                <div class="register__field">
-					<input type="number" class="register__input" placeholder="Body Fat(%)" formControlName="bodyFat">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['bodyFat'].errors?.['required'] && registerForm.controls['bodyFat'].touched">
-                    Body Fat is required for register
-                </mat-error>
-                <div class="register__field">
-					<i class="register__icon bi bi-person-circle"></i>
-					<input type="number" class="register__input" placeholder="Skeletal Muscle" formControlName="skeletalMuscle">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['skeletalMuscle'].errors?.['required'] && registerForm.controls['skeletalMuscle'].touched">
-                    Skeletal Muscle is required for register
-                </mat-error>
-                <div class="register__field">
-					<input type="number" step="0.01" class="register__input" placeholder="Weight(lbs)" formControlName="weight">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['weight'].errors?.['required'] && registerForm.controls['weight'].touched">
-                    Weight is required for register
-                </mat-error>
-                <div class="register__field">
-                    <select class="register__input" aria-placeholder="Gender" name="gender" id="gender" formControlName="gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['gender'].errors?.['required'] && registerForm.controls['gender'].touched">
-                    Gender is required for register
-                </mat-error>
-                <div class="register__field">
-					<input type="date" step="0.01" class="register__input" placeholder="Date" formControlName="DOB">
-				</div>
-				&nbsp;
-                <mat-error *ngIf="registerForm.controls['DOB'].errors?.['required'] && registerForm.controls['DOB'].touched">
-                    Date is required for register
-                </mat-error>
-                <mat-error class="login-error" *ngIf="registerError">
-                    Email already in use
-                </mat-error>
-			</form>
-
-            <button class="button register__submit" *ngIf="registerForm.valid && (registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value)" (click)="register()">
-                <span class="button__text">Create Profile</span>
-                <i class="button__icon fas fa-chevron-right"></i>
-            </button>
-            <button class="button register__submit" (click)="clearForm()">
-                <span class="button__text">Clear</span>
-            </button>
-		</div>
-		<div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
-		</div>		
-        <div class="heading">
-            <h4 [routerLink]="['/login']">
-                Already have an account? SignIn
-            </h4>
+<div class="mx-auto col-10 col-md-8 col-lg-6 row">
+    <h2 *ngIf="registerError" class="text-danger">Email is already registered please proceed to login</h2>
+</div>
+<form [formGroup]="registerForm" *ngIf="!submitted">
+    <div class="mx-auto col-10 col-md-8 col-lg-6 row">
+        <div class="col-lg-6 mb-6 p-2">
+            <label for="validationDefault01">First name</label>
+            <input type="text" class="form-control" formControlName="firstName" id="validationDefault01"
+                placeholder="First name" required>
+            <mat-error
+                *ngIf="registerForm.controls['firstName'].errors?.['required'] && registerForm.controls['firstName'].touched">First
+                Name is required</mat-error>
         </div>
-	</div>
-</div>
+        <div class="col-lg-6 mb-6 p-2">
+            <label for="validationDefault02">Last name</label>
+            <input type="text" class="form-control" formControlName="lastName" id="validationDefault02"
+                placeholder="Last name" required>
+            <mat-error
+                *ngIf="registerForm.controls['lastName'].errors?.['required'] && registerForm.controls['lastName'].touched">Last
+                Name is required</mat-error>
+        </div>
+        <div class="col-lg-15 mb-6 p-2">
+            <label for="validationDefaultUsername">Username</label>
+            <input type="text" class="form-control" formControlName="username" id="validationDefaultUsername"
+                placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+            <mat-error
+                *ngIf="registerForm.controls['username'].errors?.['required'] && registerForm.controls['username'].touched">UserName
+                is required</mat-error>
+        </div>
+        <div class="col-lg-15 mb-6 p-2">
+            <label for="validationDefaultUsername">Email</label>
+            <input type="email" class="form-control" formControlName="email" id="validationDefaultUsername"
+                placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+            <mat-error
+                *ngIf="registerForm.controls['email'].errors?.['required'] && registerForm.controls['email'].touched">Email
+                is required</mat-error>
+            <mat-error
+                *ngIf="(!registerForm.controls['email'].errors?.['required'] && registerForm.controls['email'].invalid) && registerForm.controls['email'].touched">Email
+                format is invalid</mat-error>
+        </div>
+        <div class="col-lg-15 mb-6 p-2">
+            <label for="validationDefaultUsername">Password</label>
+            <input type="password" class="form-control" formControlName="password" id="validationDefaultUsername"
+                placeholder="Password" aria-describedby="inputGroupPrepend2" required>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                Your password must be 8-15 characters long, contain letters and numbers,special characters and must not contain spaces or emoji.
+                
+            </small>
+            <mat-error
+                *ngIf="registerForm.controls['password'].errors?.['required'] && registerForm.controls['password'].touched">Password
+                is required</mat-error>
+            <mat-error
+                *ngIf="(!registerForm.controls['password'].errors?.['required'] && registerForm.controls['password'].invalid) && registerForm.controls['password'].touched">
+                <ul>
+                    <li>Password must contain 1 capital letter</li>
+                    <li>Password must contain 1 small letter</li>
+                    <li>Password must contain 1 numeric character</li>
+                    <li>Password must contain 1 special character</li>
+                    <li>Password must be of length 8 to 15 characters</li>
+                </ul>
+            </mat-error>
+        </div>
+        <div class="col-lg-15 mb-6 p-2">
+            <label for="validationDefaultUsername">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword" id="validationDefaultUsername"
+                placeholder="Confirm Password" aria-describedby="inputGroupPrepend2" required>
+            <mat-error
+                *ngIf="registerForm.controls['confirmPassword'].errors?.['required'] && registerForm.controls['confirmPassword'].touched">Password
+                is required</mat-error>
+            <mat-error
+                *ngIf="(registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value) && registerForm.controls['confirmPassword'].touched">
+                Your password does not match the above
+            </mat-error>
+        </div>
+        <div class="col-lg-15 mb-6 p-2">
+            <label>Select your Gender</label>
+            <select class="form-select" formControlName="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="col-lg-15 mb-6 p-2">
+            <div class="col-lg-3 col-sm-6">
+                <label for="startDate">Date of Birth</label>
+                <input id="startDate" class="form-control" type="date" formControlName="DOB" />
+                <span id="startDateSelected"></span>
+            </div>
+            <mat-error
+            *ngIf="registerForm.controls['DOB'].errors?.['required'] && registerForm.controls['DOB'].touched">Date of Birth
+            is required</mat-error>
+        </div>
+        <div class="col-lg-6 mb-6 p-2">
+            <label for="validationDefault01">Height</label>
+            <div class="input-group">
+                <input type="number" class="form-control" formControlName="height" id="inlineFormInputGroupUsername" placeholder="Height(cm)">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">cm</div>
+                </div>
+              </div>
+            <mat-error
+                *ngIf="registerForm.controls['height'].errors?.['required'] && registerForm.controls['height'].touched">Height
+                is required</mat-error>
+        </div>
+        <div class="col-lg-6 mb-6 p-2">
+            <label for="validationDefault01">Weight</label>
+            <div class="input-group">
+                <input type="number" class="form-control" formControlName="weight" id="inlineFormInputGroupUsername" placeholder="Weight(lbs)">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">lbs</div>
+                </div>
+              </div>
+            <mat-error
+                *ngIf="registerForm.controls['weight'].errors?.['required'] && registerForm.controls['weight'].touched">Weight
+                is required</mat-error>
+        </div>
+        <div class="col-lg-6 mb-6 p-2">
+            <label for="validationDefault01">Body Fat</label>
+            <div class="input-group">
+                <input type="number" class="form-control" formControlName="bodyFat" id="inlineFormInputGroupUsername" placeholder="BodyFat(%)">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">%</div>
+                </div>
+              </div>
+            <mat-error
+                *ngIf="registerForm.controls['bodyFat'].errors?.['required'] && registerForm.controls['bodyFat'].touched">Body Fat
+                is required</mat-error>
+        </div>
+        <div class="col-lg-6 mb-6 p-2">
+            <label for="validationDefault01">Skeletal Muscle</label>
+            <div class="input-group">
+                <input type="number" class="form-control" formControlName="skeletalMuscle" id="inlineFormInputGroupUsername" placeholder="Skeletal Muscle">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">%</div>
+                </div>
+              </div>
+            <mat-error
+                *ngIf="registerForm.controls['skeletalMuscle'].errors?.['required'] && registerForm.controls['skeletalMuscle'].touched">Skeletal Muscle
+                is required</mat-error>
+        </div>
+        <div class="col-md-6 mb-2 p-2" *ngIf="registerForm.valid && (registerForm.controls['password'].value === registerForm.controls['confirmPassword'].value)">
+            <button class="btn btn-primary col-lg-15" (click)="register()">Create Profile</button>
+        </div>
+        <div class="col-md-6 mb-2 p-2">
+            <button class="btn btn-warning col-lg-15" (click)="clearForm()">Clear Form</button>
+        </div>
+    </div>
+</form>

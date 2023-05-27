@@ -1,258 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
-@import url(https://fonts.googleapis.com/css?family=Exo:100);
-/* Background data (Original source: https://subtlepatterns.com/grid-me/) */
-/* Animations */
-@-webkit-keyframes bg-scrolling-reverse {
-  100% {
-    background-position: 50px 50px;
-  }
-}
-@-moz-keyframes bg-scrolling-reverse {
-  100% {
-    background-position: 50px 50px;
-  }
-}
-@-o-keyframes bg-scrolling-reverse {
-  100% {
-    background-position: 50px 50px;
-  }
-}
-@keyframes bg-scrolling-reverse {
-  100% {
-    background-position: 50px 50px;
-  }
-}
-@-webkit-keyframes bg-scrolling {
-  0% {
-    background-position: 50px 50px;
-  }
-}
-@-moz-keyframes bg-scrolling {
-  0% {
-    background-position: 50px 50px;
-  }
-}
-@-o-keyframes bg-scrolling {
-  0% {
-    background-position: 50px 50px;
-  }
-}
-@keyframes bg-scrolling {
-  0% {
-    background-position: 50px 50px;
-  }
-}
-/* Main styles */
-.landing {
-padding-top: 50px;
-  color: #999;
-  font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
-  text-align: center;
-  /* img size is 50x50 */
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
-  -webkit-animation: bg-scrolling-reverse 1s infinite;
-  /* Safari 4+ */
-  -moz-animation: bg-scrolling-reverse 1s infinite;
-  /* Fx 5+ */
-  -o-animation: bg-scrolling-reverse 1s infinite;
-  /* Opera 12+ */
-  animation: bg-scrolling-reverse 1s infinite;
-  /* IE 10+ */
-  -webkit-animation-timing-function: linear;
-  -moz-animation-timing-function: linear;
-  -o-animation-timing-function: linear;
-  animation-timing-function: linear;
-}
-body::before {
-  content: "INFINITY";
-  font-size: 8rem;
-  font-weight: 100;
-  font-style: normal;
-}
-
-
-
-
-
-
-
-
-
-
-
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
-figure.snip1091 {
-  font-family: 'Raleway', Arial, sans-serif;
-  position: relative;
-  display: inline-block;
-  margin: 10px;
-  min-width: 220px;
-  max-width: 310px;
-  max-height: 310px;
-  width: 100%;
-  overflow: hidden;
-  text-align: center;
-  background: #000000;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-}
-
-figure.snip1091 * {
-  -webkit-transition: all 0.35s ease-in-out;
-  transition: all 0.35s ease-in-out;
-}
-
-figure.snip1091 img {
-  opacity: 0.25;
-  max-width: 100%;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
-figure.snip1091 figcaption {
-  position: absolute;
-  top: 50%;
-  left: 30px;
-  right: 30px;
-  -webkit-transform: rotate(0deg) translateY(-50%) scale(1);
-  transform: rotate(0deg) translateY(-50%) scale(1);
-  -webkit-transform-origin: center 0;
-  transform-origin: center 0;
-}
-
-figure.snip1091 figcaption h2 {
-  top: 50%;
-  letter-spacing: -1px;
-  color: #ffffff;
-  text-transform: uppercase;
-  padding: 10px 0;
-  margin: 0;
-  font-weight: 400;
-}
-
-figure.snip1091 figcaption h2 span {
-  font-weight: 800;
-}
-
-figure.snip1091 figcaption:before,
-figure.snip1091 figcaption:after {
-  background-color: rgba(255, 255, 255, 0.8);
-  width: 100%;
-  height: 2px;
-  position: absolute;
-  content: "";
-  display: block;
-  -webkit-transition: all 0.35s ease-in-out;
-  transition: all 0.35s ease-in-out;
-}
-
-figure.snip1091 figcaption:before {
-  left: 0;
-  top: 0;
-}
-
-figure.snip1091 figcaption:after {
-  bottom: 0;
-  right: 0;
-}
-
-figure.snip1091.blue {
-  background: #091b27;
-}
-
-figure.snip1091.red {
-  background: #2e0e0a;
-}
-
-figure.snip1091.yellow {
-  background: #4f3204;
-}
-
-figure.snip1091.green {
-  background: #061c10;
-}
-
-figure.snip1091.navy {
-  background: #000000;
-}
-
-figure.snip1091 a {
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-}
-
-figure.snip1091:hover img,
-figure.snip1091.hover img {
-  opacity: 1;
-}
-
-figure.snip1091:hover figcaption,
-figure.snip1091.hover figcaption {
-  -webkit-transform: rotate(-45deg) translateY(-50%) scale(0.9);
-  transform: rotate(-45deg) translateY(-50%) scale(0.9);
-}
-
-figure.snip1091:hover figcaption:before,
-figure.snip1091.hover figcaption:before,
-figure.snip1091:hover figcaption:after,
-figure.snip1091.hover figcaption:after {
-  width: 200%;
-}
-
-/* Demo purposes only */
-html {
-  height: 100%;
-}
 body {
-  background-color: #212121;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: wrap;
-  margin: 0;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.headline {
+  left: 130px;
+} 
+.clipped {
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+* {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.column>img{
+  height: 500px;
+  overflow: hidden;
+}
+
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+h2{
+  position: relative;
+  font-size: 14vw;
+  color: #252839;
+  -webkit-text-stroke: 0.3vw #383d52;
+  text-transform: uppercase;
+}
+h2::before{
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-}
-.hero {
-    /* padding-top: 100%; */
-    /* background-color: #2e0e0a; */
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    
-        width: 100%;
-        /* height: 1000px; */
-     
-  
-  }
-  .landing{
-    display: grid;
-    justify-content: center;
-    align-items: center;
-  }
+  color: #01fe87;
+  -webkit-text-stroke: 0vw #383d52;
+  border-right: 2px solid #01fe87;
+  overflow: hidden;
+  animation: animate 6s linear infinite;
 
-.app-heading{
-    font-size: 150px;
-    color: white;
-    font-family: fantasy;
-    display: grid;
-    /* width:100%; */
-    justify-content: center;
-    align-items: center; 
-   padding: 0px 250px 0px 250px;
-    background-image: url(../../assets/crossfit.jpg);
-    background-size: cover;
-    height: 500px;
+}
+@keyframes animate{
+  0%,10%,100%{
+      width: 0;
+  }
+  70%,90%{
+      width: 100%;
+  }
 }
 
-
-.three-cards {
-   
-    display: flex;
-    justify-content:center;
-    width:100%;
+@media screen and (max-width: 650px){
+  .headline {
+    left: 20px;
+  } 
+  .clipped {
+    clip-path: none;
+    max-height: 300px !important;
+    padding-bottom: 50px;
   }
+  .column {
+    float:none;
+    width: 100%;
+    padding: 5px;
+  }
+}
 
-  
