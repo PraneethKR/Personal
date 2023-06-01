@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
-  @ViewChild('forgetPasswordDialog', { static: true }) forgetPasswordDialog: TemplateRef<any>
   private _unsubscribeAll: Subject<any>
   loginForm: FormGroup;
   email: string
@@ -38,9 +38,8 @@ export class LoginComponent implements OnInit {
     }))
   }
 
-  ForgetPassword(){
-
-    this.dialog.open(this.forgetPasswordDialog)
+  forgotPassword(){
+    this._router.navigate(['/forgotPassword',])
   }
 
   ngOnInit() {

@@ -60,6 +60,13 @@ const routes: Routes = [
         canActivate: [GuardAuthService]
   },
   {
+    path: 'forgotPassword',
+    loadChildren: () =>
+        import('./forgot-password/forgot-password.module').then(
+            (m) => m.ForgotPasswordModule
+        )
+  },
+  {
     path: 'contact',
     component: ContactComponent
   },

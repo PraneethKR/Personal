@@ -18,6 +18,9 @@ export class HeadingComponent {
 
   ngOnInit(){
     this.user = JSON.parse(localStorage.getItem('user'))
+    if(this.user != null){
+      this.name = this.user.firstName
+    }
     this._login.loginStatusChange().subscribe(loggedIn =>{
       if(loggedIn === true){
         this.user = JSON.parse(localStorage.getItem('user'))
