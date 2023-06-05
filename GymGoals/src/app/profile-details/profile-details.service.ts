@@ -105,6 +105,15 @@ export class ProfileDetailsService {
       )
   }
 
+  updatePassword(data: any) {
+    return this.http.post('http://localhost:8080/profile/updatePassword', data, httpOptions)
+    .pipe(
+      map((data: any) =>{
+        return data;
+      })
+    )
+  }
+
   updateSkeletalMuscleTarget(data: any) {
     return this.http
       .post('http://localhost:8080/profile/updateSkeletalMuscleTarget', data, httpOptions)

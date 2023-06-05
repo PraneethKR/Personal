@@ -131,7 +131,7 @@
                       <div>
                         <button
                           *ngIf="changePasswordForm.valid && (changePasswordForm.controls['confirmPassword'].value === changePasswordForm.controls['newPassword'].value)"
-                          class="btn btn-primary">Save</button>
+                          class="btn btn-primary" (click)="updatePassword()">Save</button>
                         &nbsp;
                       </div>
                     </form>

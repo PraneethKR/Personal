@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileDetailsService } from './profile-details.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 import { LoginService } from '../login/login.service';
 
 @Component({
@@ -55,6 +55,7 @@ export class ProfileDetailsComponent implements OnInit {
       skeletalMuscle: [,Validators.required]
     })
     this.changePasswordForm = this._formBuilder.group({
+      id: [this.token, Validators.required],
       oldPassword: ["", Validators.required],
       newPassword: ["",[Validators.required, Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}")]],
       confirmPassword: ["", Validators.required]
@@ -118,6 +119,12 @@ export class ProfileDetailsComponent implements OnInit {
         console.log(this.profileData)
       })
     }
+  }
+
+  updatePassword(){
+    this._profileService.updatePassword(this.changePasswordForm.value).pipe(takeUntil(this._unsubscribeAll)).subscribe((data)=>{
+      this.ngOnInit();
+    })
   }
 
   calc(){
