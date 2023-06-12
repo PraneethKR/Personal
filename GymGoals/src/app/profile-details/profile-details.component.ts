@@ -114,6 +114,8 @@ export class ProfileDetailsComponent implements OnInit {
   deleteProfile(){
     if(confirm("Are you sure you want to delete your profile")){
       this._profileService.deleteProfile({"id": this.token}).pipe(takeUntil(this._unsubscribeAll)).subscribe((userData)=>{
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
         this._user.logout()
         this._route.navigate([''])
         console.log(this.profileData)
@@ -131,7 +133,7 @@ export class ProfileDetailsComponent implements OnInit {
     if(this.weight < this.profileData.weight[this.profileData.weight.length - 1]){
       this.weightTarget = (this.weight/this.profileData.weight[this.profileData.weight.length - 1])*100
     }else if(this.weight > this.profileData.weight[this.profileData.weight.length - 1]){
-      this.weight = (this.profileData.weight[this.profileData.weight.length - 1]/this.weight)*100
+      this.weightTarget = (this.profileData.weight[this.profileData.weight.length - 1]/this.weight)*100
     }else{
       this.weightTarget = 100
     }
