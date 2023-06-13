@@ -1,0 +1,27 @@
+
+<div class="p-2 text-center bg-light">
+    <h1 class="mb-2">Select a preloaded workout plan or a custom workout plan</h1>
+    </div>
+  <div class="container">
+    <div class="row">
+    <div class="col-sm" *ngFor="let data of workouts">
+    <div class="card" style="width: 18rem; margin: 10px;" (click)="create(data.type,data.name)">
+        <img class="card-img-top" style="max-height: 200px" src="../../../assets/workouts/{{data.type}}.gif" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{data.name}}</h5>
+        </div>
+    </div>
+    </div>
+    <div class="col-sm">
+        <div class="card" style="width: 18rem; margin: 10px;" (click)="create('custom','custom')">
+            <div class="plus" style="max-height: 200px;">
+                <div class="plus-horizontal"></div>
+                <div class="plus-vertical"></div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Custom Plan</h5>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>

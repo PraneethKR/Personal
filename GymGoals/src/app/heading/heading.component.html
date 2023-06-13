@@ -21,6 +21,12 @@
           <li class="nav-item p-2">
             <a class="nav-link active" aria-current="page" *ngIf="user != null" (click)="logout()">Logout</a>
           </li>
+          <li class="nav-item p-2">
+            <a class="nav-link active" aria-current="page" href="/workout/main-page"  *ngIf="(user != null && user.verification == 'verified')">Workout Plans</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link active" aria-current="page" href="/workout/create" *ngIf="(user != null && user.verification == 'verified')">Create Workout Plans</a>
+          </li>
           <li class="nav-item p-2" (click)="profileDetails()" *ngIf="user != null">
             <a class="nav-link active" aria-current="page">
               Profile</a>

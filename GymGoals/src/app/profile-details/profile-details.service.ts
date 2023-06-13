@@ -124,4 +124,13 @@ export class ProfileDetailsService {
         })
       )
   }
+
+  getAllWorkoutPlan(data:any){
+    return this.http.post('http://localhost:8080/workout/getWorkoutPlan', data, httpOptions)
+    .pipe(
+      map((data)=>{
+        return data;
+      })
+    )
+  }
 }

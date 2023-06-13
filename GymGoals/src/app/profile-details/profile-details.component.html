@@ -144,54 +144,21 @@
                   <div class="card-header bg-transparent border-0">
                     <h3 class="mb-0">Weekly Workout plan</h3>
                   </div>
-                  <div class="card-body">
-                    <h5 class="card-title">Today's Plan</h5>
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-info">Details</a>
+                  <div class="card-body" *ngFor="let data of workouts">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <h5 class="card-title">WeekDay: {{data.weekDay}}</h5>
+                      <h5 class="card-title">Name: {{data.name}}</h5>
+                      <h5 class="card-title">Type: {{data.type}}</h5>
+                      <a href="#" style="margin-right: 10px;" class="btn btn-info">Details</a>
+                      <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <img class="float-right" style="max-height: 200px" src="../../../assets/workouts/{{data.type}}.gif" alt="Card image cap">
+                    </div>
                   </div>
                   <hr />
-                  <div class="card-body">
-                    <h5 class="card-title">Tuesday</h5>
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-info">Details</a>
-                  </div>
-                  <hr />
-                  <div class="card-body">
-                    <h5 class="card-title">Wednesday</h5>
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-info">Details</a>
-                  </div>
-                  <hr />
-                  <div class="card-body">
-                    <h5 class="card-title">Thursday</h5>
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-info">Details</a>
-                  </div>
-                  <hr />
-                  <div class="card-body">
-                    <h5 class="card-title">Friday</h5>
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-info">Details</a>
-                  </div>
-                  <hr />
-                  <div class="card-body">
-                    <h5 class="card-title">Saturday</h5>
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-info">Details</a>
-                  </div>
-                  <hr />
-                  <div class="card-body">
-                    <h5 class="card-title">Sunday</h5>
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-info">Details</a>
-                  </div>
+                  </div>             
                 </div>
                 <br />
               </div>

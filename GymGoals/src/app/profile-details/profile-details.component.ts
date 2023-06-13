@@ -30,6 +30,7 @@ export class ProfileDetailsComponent implements OnInit {
   weightTarget = 0
   skeletalMuscleTarget = 0
   bodyFatTarget = 0
+  workouts: any;
   
 
   ngOnInit(){
@@ -60,6 +61,11 @@ export class ProfileDetailsComponent implements OnInit {
       newPassword: ["",[Validators.required, Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}")]],
       confirmPassword: ["", Validators.required]
     })
+    this._profileService.getAllWorkoutPlan({"id": this.token}).pipe(takeUntil(this._unsubscribeAll)).subscribe((data)=>{
+      var today = new Date();
+      var todayWeekday = today.getDay(); 
+      this.workouts = data
+    });
   }
 
   changeUserName(){

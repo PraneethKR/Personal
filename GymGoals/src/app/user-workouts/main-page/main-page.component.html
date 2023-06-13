@@ -1,0 +1,42 @@
+
+<div class="card mx-auto" style="width: 18rem;" (click)="create()">
+    <div class="plus">
+        <div class="plus-horizontal"></div>
+        <div class="plus-vertical"></div>
+    </div>
+    <div class="card-body">
+    <h1>Create</h1>
+        <p>Some content goes here...</p>
+    </div>
+</div>
+<hr/>
+
+<div class="p-2 text-center bg-light">
+<h1 class="mb-2">Your Workout Plans</h1>
+</div>
+
+<div class="p-2 text-center bg-light" *ngIf="!found">
+  <h3 class="mb-2">There are no workouts for you. Please start by creating one.</h3>
+  </div>
+
+<div class="container" *ngIf="found">
+<div class="row">
+<div class="col-sm" *ngFor="let data of workouts">
+<div class="card" style="width: 18rem; margin: 30px;">
+  <img class="card-img-top" style="max-height: 200px" src="../../../assets/workouts/{{data.type}}.gif" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{data.name}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{data.type}}</li>
+      <li class="list-group-item">{{data.weekDay}}</li>
+    </ul>
+    <div class="card-body">
+        <button class="btn btn-danger">Delete</button>
+        &nbsp;
+        <button class="btn btn-primary">Details</button>
+    </div>
+</div>
+</div>
+</div>
+</div>

@@ -21,6 +21,8 @@ import { AuthServiceInterceptor } from './auth-service.interceptor';
 import { HeadingComponent } from './heading/heading.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
+import { UserWorkoutsComponent } from './user-workouts/user-workouts.component';
+import { getLocaleNumberFormat } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -67,6 +69,14 @@ const routes: Routes = [
         )
   },
   {
+    path: 'workout',
+    loadChildren: () =>
+        import('./user-workouts/user-workouts.module').then(
+            (m) => m.UserWorkoutsModule
+        ),
+        canActivate: [GuardAuthService]
+  },
+  {
     path: 'contact',
     component: ContactComponent
   },
@@ -83,6 +93,7 @@ const routes: Routes = [
     HeadingComponent,
     FooterComponent,
     ContactComponent,
+    UserWorkoutsComponent,
   ],
   imports: [
     BrowserModule,

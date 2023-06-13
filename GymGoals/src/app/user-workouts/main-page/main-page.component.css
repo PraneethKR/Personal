@@ -1,0 +1,27 @@
+.plus {
+    width: 18rem;
+    height: 18rem;
+    background: linear-gradient(45deg, #ffbf00, #ff0080);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .plus-horizontal,
+  .plus-vertical {
+    width: 80px;
+    height: 10px;
+    background: linear-gradient(to right, #ffffff, #ffffff);
+    position: absolute;
+  }
+  
+  .plus-vertical {
+    transform: rotate(90deg);
+  }
+  
+  hr {
+    border: none;
+    height: 5px;
+    color: black;
+    background-color: black;
+  }
